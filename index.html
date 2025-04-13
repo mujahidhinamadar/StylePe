@@ -57,6 +57,35 @@
             </div>
             
     </section>
+
+    <form id="productForm">
+  <input name="name" placeholder="Product Name">
+  <input name="image" placeholder="Image URL">
+  <input name="price" placeholder="Price">
+  <input name="whatsapp" placeholder="WhatsApp Link">
+  <button type="submit">Add Product</button>
+</form>
+
+<script>
+document.getElementById('productForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  const data = {
+    data: [{
+      name: this.name.value,
+      image: this.image.value,
+      price: this.price.value,
+      whatsapp: this.whatsapp.value
+    }]
+  };
+
+  fetch('https://sheetdb.io/api/v1/YOUR_API_ID', {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify(data)
+  }).then(res => alert('Product Added!'));
+});
+</script>
+    
 <footer>
     <p>&copy; 2025 StylePe. All Rights Reserved.</p>
     <p>Contact us on WhatsApp: <a href="https://wa.me/6300058173" target="_blank">6300058173</a></p>
