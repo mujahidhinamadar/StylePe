@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Add Product - StylePe</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>StylePe</h1>
+    <p>Luxury Fashion for You</p>
+    <nav>
+      <a href="index.html">Home</a> | 
+      <a href="about.html">About</a> | 
+      <a href="add-product.html">Add Product</a>
+    </nav>
+  </header>
+
+  <section class="form-section">
+    <h2 style="color: #d4af37;">Add a New Product</h2>
+    <form id="productForm">
+      <input name="name" placeholder="Product Name" required><br><br>
+      <input name="image" placeholder="Image URL" required><br><br>
+      <input name="price" placeholder="Price" required><br><br>
+      <input name="whatsapp" placeholder="WhatsApp Link" required><br><br>
+      <button type="submit">Add Product</button>
+    </form>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 StylePe. All Rights Reserved.</p>
+    <p>Contact us on WhatsApp: <a href="https://wa.me/6300058713" target="_blank">6300058713</a></p>
+  </footer>
+
+  <script>
+    document.getElementById('productForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const data = {
+        data: [{
+          name: this.name.value,
+          image: this.image.value,
+          price: this.price.value,
+          whatsapp: this.whatsapp.value
+        }]
+      };
+
+      fetch('https://sheetdb.io/api/v1/tkacns5kipki4', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(data)
+      }).then(res => alert('Product Added!'));
+    });
+  </script>
+</body>
+</html>
