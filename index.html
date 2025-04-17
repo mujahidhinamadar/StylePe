@@ -25,11 +25,10 @@
 </section>
 
 <script>
-  // JavaScript to load and display products
   window.onload = function() {
     const loadingText = document.getElementById('loadingText');
-    
-    fetch('https://sheetdb.io/api/v1/tkacns5kipki4') // Replace with your SheetDB API URL
+
+    fetch('https://sheetdb.io/api/v1/tkacns5kipki4')
       .then(response => response.json())
       .then(data => {
         const productsSection = document.querySelector('.products');
@@ -37,18 +36,18 @@
         data.forEach(product => {
           const productCard = document.createElement('div');
           productCard.classList.add('product-card');
-          
+
           productCard.innerHTML = `
             <img src="${product.image}" alt="${product.name}">
             <h2>${product.name}</h2>
             <p>${product.price}</p>
             <a href="${product.whatsapp}" target="_blank">Buy on WhatsApp</a>
           `;
-          
+
           productsSection.appendChild(productCard);
         });
 
-        // Hide the loading text
+        // ✅ Hide the loading text after products are added
         loadingText.style.display = 'none';
       })
       .catch(err => {
@@ -58,33 +57,6 @@
   };
 </script>
 
-    <script>
-// Fetch data from Google Sheet
-window.onload = function() {
-  fetch('https://sheetdb.io/api/v1/tkacns5kipki4') // Replace with your SheetDB API URL
-    .then(response => response.json())
-    .then(data => {
-      const productsSection = document.querySelector('.products');
-
-      // Loop through the products and display them
-      data.forEach(product => {
-        const productCard = document.createElement('div');
-        productCard.classList.add('product-card');
-        
-        productCard.innerHTML = `
-          <img src="${product.image}" alt="${product.name}">
-          <h2>${product.name}</h2>
-          <p>${product.price}</p>
-          <a href="${product.whatsapp}" target="_blank">Buy on WhatsApp</a>
-        `;
-        
-        // Append the product card to the products section
-        productsSection.appendChild(productCard);
-      });
-    })
-    .catch(err => console.error('Error fetching data:', err));
-};
-</script>
   
 
   <footer>
